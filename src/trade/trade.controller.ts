@@ -9,13 +9,13 @@ export class TradeController {
   constructor(private readonly tradeService: TradeService) {}
 
   @Get()
-  @ApiOperation({ summary: 'Greetings' })
+  @ApiOperation({ summary: 'Search all trade' })
   findAll(): Promise<Trade[]> {
     return this.tradeService.findAll();
   }
 
   @Delete()
-  @ApiOperation({ summary: 'Greetings' })
+  @ApiOperation({ summary: 'Clear database' })
   remove(): Promise<void> {
     return this.tradeService.remove();
   }
