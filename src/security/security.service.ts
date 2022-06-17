@@ -10,7 +10,6 @@ export class SecurityService {
     private readonly securityModel: typeof Security,
   ) {}
 
-  //создает инструмент в БД возвращает исходные данные с присвоенным ID
   async create(createSecurityDto: CreateSecurityDto): Promise<Security> {
     return this.securityModel.create({createSecurityDto});
   }
@@ -19,19 +18,21 @@ export class SecurityService {
     return this.securityModel.findAll();
   }
 
-  //список инструментов с идентфикатороми
   async findAllShortInfo(): Promise<Security[]> {
     return this.securityModel.findAll({
       attributes: ['id', 'seccode'],
     });
   }
 
-  //данные из БД по конкретному инструменту в соответвии с ID
   async findOne(id: string): Promise<Security> {
     return this.securityModel.findOne({
       where: {
         id,
       },
     });
+  }
+
+  async remove(): Promise<void> {
+    await Security.destroy();
   }
 }
