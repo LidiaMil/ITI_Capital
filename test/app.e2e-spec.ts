@@ -21,10 +21,20 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('Hello World!');
   });
-  it('/ (POST)', () => {
+  it('/securityList (GET)', () => {
     return request(app.getHttpServer())
       .get('/securityList')
       .expect(200)
-      .expect([]);
+  });
+  it('/security/:id (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/security/100')
+      .expect(200)
+      .expect({});
+  });
+  it('/security (POST)', () => {
+    return request(app.getHttpServer())
+      .post('/security')
+      .expect(201)
   });
 });
