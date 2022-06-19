@@ -14,6 +14,9 @@ export class TradeService {
   }
 
   async remove(): Promise<void> {
-    await Trade.destroy();
+    await this.tradeModel.destroy({
+      where: {},
+      truncate: true
+    });
   }
 }

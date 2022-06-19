@@ -33,6 +33,9 @@ export class SecurityService {
   }
 
   async remove(): Promise<void> {
-    await Security.destroy();
+    await this.securityModel.destroy({
+      where: {},
+      truncate: true
+    });
   }
 }

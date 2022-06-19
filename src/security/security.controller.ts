@@ -47,7 +47,7 @@ export class SecurityController {
   }
 
   @Delete()
-  @ApiOperation({ summary: 'Clear database' })
+  @ApiOperation({ summary: 'Clear table' })
   @ApiResponse({ status: 200, description: 'Successfully updated schema.' })
   @ApiResponse({ status: 400, description: 'Missing or invalid request body.' })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
