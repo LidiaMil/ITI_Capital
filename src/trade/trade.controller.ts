@@ -15,7 +15,7 @@ export class TradeController {
   }
 
   @Delete()
-  @ApiOperation({ summary: 'Clear database' })
+  @ApiOperation({ summary: 'Clear table' })
   remove(): Promise<void> {
     return this.tradeService.remove();
   }
