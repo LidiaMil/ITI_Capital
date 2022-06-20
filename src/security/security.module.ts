@@ -8,5 +8,6 @@ import { SecurityService } from './security.service';
   imports: [SequelizeModule.forFeature([Security])],
   providers: [SecurityService],
   controllers: [SecurityController],
+  exports: [SecurityService],
 })
 export class SecurityModule {}
