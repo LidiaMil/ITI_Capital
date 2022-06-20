@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
+import { ScheduleModule } from '@nestjs/schedule';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SecurityModule } from './security/security.module';
+import { TasksModule } from './tasks/tasks.module';
 import { TradeModule } from './trade/trade.module';
 
 @Module({
@@ -20,7 +22,9 @@ import { TradeModule } from './trade/trade.module';
       omitNull: true
     }),
     SecurityModule,
-    TradeModule
+    TradeModule,
+    ScheduleModule.forRoot(), 
+    TasksModule
   ],
   controllers: [AppController],
   providers: [AppService],
