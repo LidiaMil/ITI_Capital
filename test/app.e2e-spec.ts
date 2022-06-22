@@ -17,26 +17,33 @@ describe('AppController (e2e)', () => {
     await mock()
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
+  test('/ (GET)', async() => {
+    const res =  await request(app.getHttpServer())
       .get('/')
       .expect(200)
       .expect('Hello World!');
+
+    // console.log(res)
   });
-  it('/securityList (GET)', () => {
+  test('/securityList (GET)', () => {
     return request(app.getHttpServer())
       .get('/securityList')
       .expect(200)
   });
-  it('/security/:id (GET)', () => {
+  test('/security/:id (GET)', () => {
     return request(app.getHttpServer())
       .get('/security/100')
       .expect(200)
-      .expect({});
   });
-  it('/security (POST)', () => {
+  test('/security (POST)', () => {
     return request(app.getHttpServer())
       .post('/security')
+      .send({
+        seccode: 'VTBR',
+        price: '2,33',
+        isin: 'testisin',
+        lotsize: 10,
+      })
       .expect(201)
   });
 });
