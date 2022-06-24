@@ -4,18 +4,19 @@ import {
     WebSocketServer,
     WsResponse,
   } from '@nestjs/websockets';
-  import { from, Observable } from 'rxjs';
-  import { map } from 'rxjs/operators';
   import { Server } from 'ws';
+import { TradeService } from './trade.service';
   
   @WebSocketGateway(8000)
   export class TradeGateway {
+    constructor(private readonly tradeService: TradeService) {}
+    
     @WebSocketServer()
     server: Server;
   
     @SubscribeMessage('events')
-    onEvent(client: any, data: any): Observable<WsResponse<number>> {
-      console.log('1111111111')
-      return from([1, 2, 3]).pipe(map(item => ({ event: 'events', data: item })));
+    onEvent(client: any, data: any) {
+      console.log('1111111111', client, data)
+      return this.tradeService.findByClient(client);
     }
   }

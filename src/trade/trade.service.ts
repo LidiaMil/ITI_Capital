@@ -9,8 +9,15 @@ export class TradeService {
     private readonly tradeModel: typeof Trade,
   ) {}
 
+
   async findAll(): Promise<Trade[]> {
     return this.tradeModel.findAll();
+  }
+
+  async findByClient(client): Promise<Trade[]> {
+    return this.tradeModel.findAll({
+      where: { client, }
+    });
   }
 
   async remove(): Promise<void> {
