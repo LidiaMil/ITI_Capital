@@ -6,8 +6,8 @@ import { TradeGateway } from './trade.gateway';
 import { TradeService } from './trade.service';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Trade]), TradeGateway],
-  providers: [TradeService],
+  imports: [SequelizeModule.forFeature([Trade])],
+  providers: [TradeService, TradeGateway],
   controllers: [TradeController],
   exports: [TradeService],
 })

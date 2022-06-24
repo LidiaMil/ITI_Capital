@@ -7,7 +7,7 @@ import {
   import { Server } from 'ws';
 import { TradeService } from './trade.service';
   
-  @WebSocketGateway(8000)
+  @WebSocketGateway(8080)
   export class TradeGateway {
     constructor(private readonly tradeService: TradeService) {}
     
