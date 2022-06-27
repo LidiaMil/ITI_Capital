@@ -2,10 +2,11 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { WsAdapter } from '@nestjs/platform-ws';
+import config from './config/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  console.log(config.app)
   const options = new DocumentBuilder()
     .setTitle('ITI_Capital')
     .setDescription('The API description')

@@ -6,16 +6,17 @@ import { AppService } from './app.service';
 import { SecurityModule } from './security/security.module';
 import { TasksModule } from './tasks/tasks.module';
 import { TradeModule } from './trade/trade.module';
+import config from './config/config';
 
 @Module({
   imports: [
     SequelizeModule.forRoot({
-      dialect: 'postgres',
-      host: '127.0.0.1',
+      host: config.app.DB_HOST,
       port: 5432,
-      username: 'auth',
-      password: 'password',
-      database: 'capital',
+      username: config.app.DB_NAME,
+      password: config.app.DB_PASS,
+      database: config.app.DB_NAME,
+      dialect: 'postgres',
       autoLoadModels: true,
       synchronize: true,
       logging:false,
